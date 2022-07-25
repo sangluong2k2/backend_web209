@@ -19,7 +19,7 @@ export const list = async (req, res) => {
 };
 export const detail = async (req,res) => {
     try {
-        const products = await Product.findOne({_id : req.params.id}).exec();
+        const products = await Product.findOne({slug : req.params.slug}).exec();
         res.json(products)
     } catch (error) {
         res.status(400).json({
@@ -62,3 +62,15 @@ export const updated = async (req,res) => {
         })
     }
 };
+
+export const search = async (req, res) => {
+    try {
+        const keySearch = req.query.q ? req.query.q : "";
+        const product = await Product.find({$text: {$search: keySearch}}).exec()
+        res.json(product)
+    } catch (error) {
+        res.status(400).json({
+            message: "Lỗi"
+        })
+    }
+}

@@ -20,8 +20,14 @@ const productSchema = mongoose.Schema({
         ref: "Category"
     },
     image: {
+        type: []
+    },
+    decription: {
         type: String
+    },
+    sold: {
+        type: Number
     }
-
 }, {timestamps: true})
+productSchema.index({ "$**": "text" })
 export default mongoose.model("Product", productSchema)
