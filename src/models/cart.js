@@ -1,5 +1,9 @@
 import mongoose, {Schema, ObjectId } from "mongoose";
 const cart = new Schema({
+    idProduct: {
+        type: String,
+        required: true
+    },
     name:{
         type: String,
         required: true
@@ -10,17 +14,13 @@ const cart = new Schema({
     price:{
         type: String
     },
-    user: {
+    uId: {
         type: ObjectId,
         ref: "User"
     },
     quantity: {
         type: Number,
         required: true
-    },
-    order:{
-        type: ObjectId,
-        ref:"Order"
     }
 }, {timestamps: true})
 export default mongoose.model("Cart", cart)

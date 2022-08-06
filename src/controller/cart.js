@@ -1,6 +1,4 @@
 import cart from "../models/cart";
-import order from "../models/order";
-import Product from "../models/product";
 
 export const listCart = async (req, res) => {
     try {
@@ -46,3 +44,17 @@ export const updateCart = async (req, res) => {
         
     }
 }
+
+export const updated = async (req,res) => {
+    const condition = {_id: req.params.id};
+    const update = req.body;
+    const optional = { new : true}
+    try {
+        const newProduct = await  cart.findOneAndUpdate(condition, update, optional).exec();
+        res.json(newProduct)
+    } catch (error) {
+        res.status(400).json({
+            message: "Edit không thành công"
+        })
+    }
+};
