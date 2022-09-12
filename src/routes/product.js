@@ -12,4 +12,4 @@ router.get(`/product`, search)
 
 // router.param("userId", userById)
 
-export default router;
+module.exports = router;

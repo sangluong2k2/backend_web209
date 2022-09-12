@@ -11,4 +11,4 @@ router.get('/category/:slug', read);
 router.delete('/categories/:id', removecate)
 router.put("/categories/:id/edit", update)
 
-export default router
+module.exports = router

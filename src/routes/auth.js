@@ -9,4 +9,4 @@ router.get('/users', list);
 router.put("/user/:id/edit", edituser);
 router.delete("/user/:id", removeuser);
 router.get("/user/:id", findone);
-export default router
+module.exports = router

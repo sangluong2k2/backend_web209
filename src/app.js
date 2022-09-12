@@ -2,20 +2,20 @@
 const express = require("express")
 const mongoose = require("mongoose")
 
-import productRouter from "./routes/product";
-import categoryRouter from "./routes/category";
-import authRouter from "./routes/auth";
-import cartRouter from "./routes/cart";
+const productRouter = require('./routes/product');
+const categoryRouter = require("./routes/category");
+const authRouter = require("./routes/auth");
+const cartRouter = require("./routes/cart");
 
-import cors from "cors"
+const cors = require("cors")
 
 const app = express();
 
 app.use(express.json())
 app.use(cors())
 
-app.use("/api", productRouter)
-app.use("/api", categoryRouter)
+app.use("/api", productRouter);
+app.use("/api", categoryRouter);
 app.use("/api", authRouter)
 app.use("/api", cartRouter)
 

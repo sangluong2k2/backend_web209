@@ -9,4 +9,4 @@ router.get('/cart/:user', listCarts)
 router.delete('/cart/:id', removeCart)
 router.put('/cart/:id', updated)
 
-export default router
+module.exports = router
