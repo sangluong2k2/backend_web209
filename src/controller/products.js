@@ -1,7 +1,7 @@
-import Product from "../models/products"
-import slugify from "slugify";
+const Product = require("../models/products")
+const slugify = require("slugify");
 
-export const list = async (req, res) => {
+const list = async (req, res) => {
     const limitNumber = 20
     const limit = req.query.limit ? +req.query.limit : limitNumber;
     const sortBy = req.query.sortBy ? req.query.sortBy : '_id';
@@ -17,7 +17,7 @@ export const list = async (req, res) => {
     }
     
 };
-export const detail = async (req,res) => {
+const detail = async (req,res) => {
     try {
         const products = await Product.findOne({slug : req.params.slug}).exec();
         res.json(products)
@@ -28,7 +28,7 @@ export const detail = async (req,res) => {
     }
     
 };
-export const add = async (req, res) => {
+const add = async (req, res) => {
     req.body.slug = slugify(req.body.name)
     try {
         const products = await new Product(req.body).save();
@@ -39,7 +39,7 @@ export const add = async (req, res) => {
         })
     }
 };
-export const remove = async (req,res) => {
+const remove = async (req,res) => {
     try {
         const products = await Product.findOneAndDelete({_id : req.params.id}).exec();
         res.json(products)
@@ -49,7 +49,7 @@ export const remove = async (req,res) => {
         })
     }
 };
-export const updated = async (req,res) => {
+const updated = async (req,res) => {
     const condition = {_id: req.params.id};
     const update = req.body;
     const optional = { new : true}
@@ -63,7 +63,7 @@ export const updated = async (req,res) => {
     }
 };
 
-export const search = async (req, res) => {
+const search = async (req, res) => {
     try {
         const keySearch = req.query.q ? req.query.q : "";
         const product = await Product.find({$text: {$search: keySearch}}).exec()
@@ -74,3 +74,5 @@ export const search = async (req, res) => {
         })
     }
 }
+
+module.exports = {list, detail, search, add, updated,remove}

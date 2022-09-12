@@ -1,5 +1,7 @@
-import mongoose, {Schema} from "mongoose";
-import { createHmac } from "crypto";
+const mongoose = require("mongoose")
+,{Schema } = require("mongoose")
+,{ObjectId } = require("mongoose")
+const { createHmac } = require("crypto");
 const userSchema = new Schema({
     name: {
         type: String,
@@ -42,4 +44,4 @@ userSchema.pre("save", function(next){
     }
 })
 
-export default mongoose.model("User", userSchema);
+module.exports = mongoose.model("User", userSchema);

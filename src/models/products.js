@@ -1,4 +1,6 @@
-import mongoose, {ObjectId} from "mongoose";
+const mongoose = require("mongoose")
+,{Schema } = require("mongoose")
+,{ObjectId } = require("mongoose")
 const productSchema = mongoose.Schema({
     name:{
         type: String,
@@ -30,4 +32,4 @@ const productSchema = mongoose.Schema({
     }
 }, {timestamps: true})
 productSchema.index({ "$**": "text" })
-export default mongoose.model("Product", productSchema)
+module.exports = mongoose.model("Product", productSchema)

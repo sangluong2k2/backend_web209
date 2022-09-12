@@ -1,17 +1,19 @@
-import mongoose, {Schema, ObjectId } from "mongoose";
+const mongoose = require("mongoose")
+,{Schema } = require("mongoose")
+,{ObjectId } = require("mongoose")
 const cart = new Schema({
     idProduct: {
         type: String,
         required: true
     },
-    name:{
+    name: {
         type: String,
         required: true
     },
-    image:{
+    image: {
         type: String
     },
-    price:{
+    price: {
         type: String
     },
     uId: {
@@ -22,5 +24,5 @@ const cart = new Schema({
         type: Number,
         required: true
     }
-}, {timestamps: true})
-export default mongoose.model("Cart", cart)
+}, { timestamps: true })
+module.exports = mongoose.model("Cart", cart)

@@ -1,5 +1,5 @@
-import { Router } from "express";
-import { edituser, findone, list, removeuser, signin, signup } from "../controller/auth";
+const { Router } = require("express");
+const { edituser, findone, list, removeuser, signin, signup } = require("../controller/auth");
 
 const router = Router();
 
@@ -9,4 +9,4 @@ router.get('/users', list);
 router.put("/user/:id/edit", edituser);
 router.delete("/user/:id", removeuser);
 router.get("/user/:id", findone);
-export default router
+module.exports = router

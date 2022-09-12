@@ -1,5 +1,5 @@
-import { Router } from 'express';
-import { add, remove, detail, list, updated, search } from '../controller/products';
+const { Router } = require('express');
+const { add, remove, detail, list, updated, search } = require('../controller/products');
 
 const router = Router();
 
@@ -12,4 +12,4 @@ router.get(`/product`, search)
 
 // router.param("userId", userById)
 
-export default router;
+module.exports = router;

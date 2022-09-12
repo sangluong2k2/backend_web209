@@ -1,6 +1,6 @@
-import cart from "../models/cart";
+const cart = require("../models/cart");
 
-export const listCart = async (req, res) => {
+const listCart = async (req, res) => {
     try {
         const listCart = await cart.find().exec()
         res.json(listCart)
@@ -9,7 +9,7 @@ export const listCart = async (req, res) => {
     }
 }
 
-export const addCart = async (req, res) => {
+const addCart = async (req, res) => {
     try {
         const addCart = await new cart(req.body).save()
         res.json(addCart)
@@ -18,7 +18,7 @@ export const addCart = async (req, res) => {
     }
 }
 
-export const listCarts = async (req, res) => {
+const listCarts = async (req, res) => {
     try {
         const user = await cart.find({user:req.params.user, "order":null}).exec()
         res.json(user)
@@ -27,7 +27,7 @@ export const listCarts = async (req, res) => {
     }
 }
 
-export const removeCart = async (req, res) => {
+const removeCart = async (req, res) => {
     try {
         const remove = await cart.findByIdAndRemove({_id:req.params.id}).exec()
         res.json(remove)
@@ -36,7 +36,7 @@ export const removeCart = async (req, res) => {
     }
 }
 
-export const updateCart = async (req, res) => {
+const updateCart = async (req, res) => {
     try {
         const user = await cart.updateMany({user: req.params.user , "order":null}, req.body, {new: true}).exec()
         res.json(user)
@@ -45,7 +45,7 @@ export const updateCart = async (req, res) => {
     }
 }
 
-export const updated = async (req,res) => {
+const updated = async (req,res) => {
     const condition = {_id: req.params.id};
     const update = req.body;
     const optional = { new : true}
@@ -58,3 +58,5 @@ export const updated = async (req,res) => {
         })
     }
 };
+
+module.exports = {listCart, listCarts, updateCart, updated, addCart, removeCart}
