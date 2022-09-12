@@ -23,5 +23,5 @@ mongoose.connect("mongodb://127.0.0.1:27017/asm_web209")
     .catch((error) => console.log(error))
     
 app.listen(process.env.PORT || 4000, () => {
-    console.log(`Server running port ${PORT}`)
+    console.log(`Server running port ${process.env.PORT || 4000}`)
 }); 
