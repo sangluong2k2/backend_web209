@@ -22,8 +22,6 @@ mongoose.connect("mongodb://127.0.0.1:27017/asm_web209")
     .then(() => console.log("connect db thanh cong"))
     .catch((error) => console.log(error))
     
-const PORT = 4000
-
-app.listen(PORT, () => {
+app.listen(process.env.PORT || 4000, () => {
     console.log(`Server running port ${PORT}`)
 }); 
