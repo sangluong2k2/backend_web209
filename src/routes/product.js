@@ -1,4 +1,4 @@
-import { Router } from 'express';
+const { Router } = require('express');
 import { add, remove, detail, list, updated, search } from '../controller/products';
 
 const router = Router();
