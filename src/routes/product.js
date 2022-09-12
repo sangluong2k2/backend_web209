@@ -1,5 +1,5 @@
 const { Router } = require('express');
-import { add, remove, detail, list, updated, search } from '../controller/products';
+const { add, remove, detail, list, updated, search } = require('../controller/products');
 
 const router = Router();
 

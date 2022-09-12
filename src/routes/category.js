@@ -1,5 +1,5 @@
-import { Router } from "express";
-import { create, get, list, read, removecate, update } from "../controller/category";
+const { Router } = require("express");
+const { create, get, list, read, removecate, update } = require("../controller/category");
 // import { checkAuth } from "../middlewear/checkAuth";
 
 const router = Router();

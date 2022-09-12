@@ -1,5 +1,5 @@
-import { Router } from "express";
-import { edituser, findone, list, removeuser, signin, signup } from "../controller/auth";
+const { Router } = require("express");
+const { edituser, findone, list, removeuser, signin, signup } = require("../controller/auth");
 
 const router = Router();
 
