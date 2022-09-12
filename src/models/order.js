@@ -1,5 +1,6 @@
-import mongoose, {Schema , ObjectId} from "mongoose";
-
+const mongoose = require("mongoose")
+,{Schema } = require("mongoose")
+,{ObjectId } = require("mongoose")
 const OrderShema = new Schema ({
     name:{
         type: String
@@ -23,4 +24,4 @@ const OrderShema = new Schema ({
     }
 }, {timestamps:true})
 
-export default mongoose.model("Order" , OrderShema)
+module.exports = mongoose.model("Order" , OrderShema)

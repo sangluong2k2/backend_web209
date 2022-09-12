@@ -1,5 +1,6 @@
-import mongoose, {Schema} from "mongoose";
-
+const mongoose = require("mongoose")
+,{Schema } = require("mongoose")
+,{ObjectId } = require("mongoose")
 const categorySchema = new Schema ({
     name: {
         type: String,
@@ -14,4 +15,4 @@ const categorySchema = new Schema ({
     },
 },{timestamps: true});
 
-export default mongoose.model("Category", categorySchema);
+module.exports = mongoose.model("Category", categorySchema)
