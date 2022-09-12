@@ -1,5 +1,5 @@
-import order from "../models/order";
-import cart from "../models/cart";
+const order = require("../models/order");
+const cart = require("../models/cart");
 
 export const listOrder = async (req, res) => {
     const listOrder = await order.find().exec()

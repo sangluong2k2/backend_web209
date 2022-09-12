@@ -1,8 +1,8 @@
-import User from "../models/user";
-import jwt from "jsonwebtoken";
+const User = require( "../models/user");
+const jwt  = require("jsonwebtoken");
 
 
-export const signup = async (req, res) => {
+const signup = async (req, res) => {
     const { email, name, password } = req.body;
     try {
         const existUser = await User.findOne({ email }).exec();
@@ -25,7 +25,7 @@ export const signup = async (req, res) => {
     }
 }
 
-export const signin = async (req, res) => {
+const signin = async (req, res) => {
     try {
         const { email, password } = req.body;
         const user = await User.findOne({ email }).exec();
@@ -62,12 +62,12 @@ export const signin = async (req, res) => {
 
 }
 
-export const list = async (req, res) => {
+const list = async (req, res) => {
     const user = await User.find().exec();
     res.json(user)
 }
 
-export const edituser = async (req, res) => {
+const edituser = async (req, res) => {
     try {
         const user = await User.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true }).exec();
         res.json(user)
@@ -76,7 +76,7 @@ export const edituser = async (req, res) => {
     }
 }
 
-export const removeuser = async (req, res) => {
+const removeuser = async (req, res) => {
     try {
         const remove = await User.findOneAndDelete({ _id: req.params.id }).exec()
         res.json(remove)
@@ -85,7 +85,7 @@ export const removeuser = async (req, res) => {
     }
 }
 
-export const findone = async (req, res) => {
+const findone = async (req, res) => {
     try {
         const getone = await User.findOne({ _id: req.params.id }).exec()
         res.json(getone)
@@ -93,3 +93,5 @@ export const findone = async (req, res) => {
 
     }
 }
+
+module.exports = {signin, signup, list, removeuser, findone, edituser}
